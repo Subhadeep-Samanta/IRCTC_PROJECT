@@ -2,224 +2,215 @@
 
 ## Summary
 
-* Total problems documented: 6 (3 given + 3 self-discovered)
-* Platform explored: irctc.co.in
-* Devices used: Desktop Chrome and Mobile Chrome
+- Total problems documented: 6
+- Platform explored: irctc.co.in
+- Devices used: Desktop Chrome and Mobile Chrome
 
 ---
 
-## Problem 1: Tatkal Booking Crashes at 10:00 AM [Given]
+# Problem 1: Tatkal Booking Crashes at 10:00 AM [Given]
 
-### What is broken
+## What is broken
 
-During Tatkal opening hours, the booking flow becomes extremely slow or unresponsive. Users receive little feedback about their position in the system and often lose booking opportunities.
+Users experience slow loading, timeouts, and booking failures during Tatkal booking hours due to extremely high traffic.
 
-### Affected users
+## Affected Users
 
-* Emergency travelers
-* Working professionals
-* Students
-* Daily passengers
+Emergency travelers, working professionals, students, and daily passengers.
 
-### Frequency
+## Frequency
 
-Daily at Tatkal opening times.
+Daily during Tatkal opening hours.
 
-### Current Flow
+## Current Flow
 
 1. User opens IRCTC at 9:50 AM.
-2. User logs in.
-3. User searches for train.
+2. User logs into account.
+3. User searches train.
 4. User selects Tatkal quota.
 5. User fills passenger details.
-6. User waits for booking window.
+6. User waits for quota opening.
 7. User clicks Book Now.
-8. Website slows down or becomes unresponsive.
-9. User refreshes repeatedly.
-10. Tatkal quota gets exhausted.
+8. System becomes slow.
+9. User refreshes multiple times.
+10. Quota gets exhausted.
 
-### Where exactly it breaks
+## Where Exactly It Breaks
 
-Step 7–8. Heavy traffic causes delays and insufficient feedback is provided.
+Step 7–8 when thousands of users send booking requests simultaneously.
 
 ---
 
-## Problem 2: Search Filters Do Not Work Reliably [Given]
+# Problem 2: Search Filters Do Not Work Reliably [Given]
 
-### What is broken
+## What is broken
 
-Filters such as class, departure time, and availability may not persist when navigating between pages.
+Applied filters do not always persist and results may appear inconsistent.
 
-### Affected users
+## Affected Users
 
-* First-time users
-* Mobile users
-* Travelers comparing trains
+Passengers comparing trains and classes.
 
-### Frequency
+## Frequency
 
 Frequently during train searches.
 
-### Current Flow
+## Current Flow
 
 1. User searches trains.
 2. Search results appear.
-3. User applies Sleeper filter.
-4. User applies Available Seats filter.
-5. User applies Departure Time filter.
-6. User opens a train result.
-7. User returns to results page.
-8. Filters reset or behave inconsistently.
+3. User selects Sleeper Class.
+4. User selects Available Seats Only.
+5. User selects Morning Departure.
+6. Results update.
+7. User opens train details.
+8. User returns.
+9. Filters reset.
 
-### Where exactly it breaks
+## Where Exactly It Breaks
 
-Step 7–8. Filter state is not consistently maintained.
+Step 8–9 where filter state is lost.
 
 ---
 
-## Problem 3: Seat Selection Resets [Given]
+# Problem 3: Seat Selection Resets [Given]
 
-### What is broken
+## What is broken
 
-Selected berth preferences may not persist through the booking process.
+Selected berth preferences are not always retained.
 
-### Affected users
+## Affected Users
 
-* Senior citizens
-* Families
-* Passengers requiring lower berths
+Senior citizens, families, and passengers requiring specific berths.
 
-### Frequency
+## Frequency
 
-Intermittent but noticeable.
+Occasional but noticeable.
 
-### Current Flow
+## Current Flow
 
 1. User searches train.
 2. User selects class.
-3. User enters passenger details.
-4. User chooses Lower Berth.
+3. User enters passenger information.
+4. User selects Lower Berth.
 5. User proceeds.
-6. Review page loads.
-7. Preference is missing or changed.
+6. Review page opens.
+7. Preference disappears.
 
-### Where exactly it breaks
+## Where Exactly It Breaks
 
-Step 5–6. User preference is not reliably carried forward.
+Step 5–6 where selected preference is not retained.
 
 ---
 
-## Problem 4: PNR Status Feature Is Difficult To Discover [Self-Discovered]
+# Problem 4: PNR Status Is Difficult To Discover [Self-Discovered]
 
-### How I found it
+## How I Found It
 
-While trying to locate ticket status information from the homepage.
+While attempting to locate PNR status from the homepage.
 
-### What is broken
+## What is broken
 
-PNR status functionality is not immediately visible to users.
+PNR status is not immediately visible and requires menu navigation.
 
-### Affected users
+## Affected Users
 
-* First-time travelers
-* Elderly users
-* Occasional passengers
+Occasional travelers and first-time users.
 
-### Frequency
+## Frequency
 
-Every time users need ticket status.
+Every time a user checks ticket status.
 
-### Current Flow
+## Current Flow
 
 1. User opens homepage.
-2. User searches for PNR status.
-3. User navigates menus.
-4. User locates enquiry section.
-5. User enters PNR number.
-6. Status is displayed.
+2. Searches for PNR option.
+3. Scans menus.
+4. Navigates to enquiry section.
+5. Finds PNR status.
+6. Enters PNR.
+7. Gets result.
 
-### Where exactly it breaks
+## Where Exactly It Breaks
 
-Step 2–4. Feature discoverability is poor.
+Step 2–4 due to poor discoverability.
 
-### Screenshot / Description
+## Screenshot
 
-Attach screenshot in assets/screenshots.
+assets/screenshots/pnr-status.png
 
 ---
 
-## Problem 5: Mobile Booking Experience Requires Excessive Scrolling [Self-Discovered]
+# Problem 5: Mobile Website Requires Excessive Scrolling [Self-Discovered]
 
-### How I found it
+## How I Found It
 
-While testing train booking on a mobile browser.
+While performing booking tasks on a mobile browser.
 
-### What is broken
+## What is broken
 
-Several booking screens require excessive scrolling and form interaction.
+Booking forms are long and require excessive scrolling.
 
-### Affected users
+## Affected Users
 
-* Mobile users
-* Elderly users
+Mobile users.
 
-### Frequency
+## Frequency
 
 Every mobile booking session.
 
-### Current Flow
+## Current Flow
 
-1. User opens mobile site.
-2. User searches trains.
-3. User selects train.
+1. User opens mobile website.
+2. Searches train.
+3. Selects train.
 4. Passenger form loads.
 5. User scrolls through multiple sections.
-6. User reviews booking information.
-7. User proceeds.
+6. Reviews details.
+7. Continues booking.
 
-### Where exactly it breaks
+## Where Exactly It Breaks
 
-Step 4–6. Long forms increase friction.
+Step 4–6 due to long forms and dense information.
 
-### Screenshot / Description
+## Screenshot
 
-Attach screenshot in assets/screenshots.
+assets/screenshots/mobile-booking.png
 
 ---
 
-## Problem 6: Refund Information Is Not Prominent During Cancellation [Self-Discovered]
+# Problem 6: Refund Information Is Not Clearly Visible [Self-Discovered]
 
-### How I found it
+## How I Found It
 
-While exploring ticket cancellation workflow.
+While exploring ticket cancellation flow.
 
-### What is broken
+## What is broken
 
-Refund amount and deductions are not prominently displayed before cancellation.
+Refund amount and deductions are not clearly displayed.
 
-### Affected users
+## Affected Users
 
-* General passengers
-* New users
+Passengers cancelling tickets.
 
-### Frequency
+## Frequency
 
 Every cancellation attempt.
 
-### Current Flow
+## Current Flow
 
-1. User opens booking history.
-2. User selects ticket.
-3. User chooses Cancel Ticket.
-4. Cancellation page loads.
-5. User looks for refund estimate.
-6. Information is difficult to find.
-7. User proceeds with uncertainty.
+1. User opens booked ticket history.
+2. Selects ticket.
+3. Clicks Cancel Ticket.
+4. Cancellation page opens.
+5. User looks for refund amount.
+6. Information is difficult to locate.
+7. User proceeds without clarity.
 
-### Where exactly it breaks
+## Where Exactly It Breaks
 
-Step 5–6. Critical refund information lacks visibility.
+Step 5–6 because refund details are not prominently displayed.
 
-### Screenshot / Description
+## Screenshot
 
-Attach screenshot in assets/screenshots.
+assets/screenshots/refund-info.png
