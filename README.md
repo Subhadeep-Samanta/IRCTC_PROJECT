@@ -23,4 +23,4 @@ irctc-sprint/
 └── assets/
 └── screenshots/
 
-Author: Subhadeep Samanta
+##Author: Subhadeep Samanta
